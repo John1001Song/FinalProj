@@ -18,8 +18,8 @@
 using namespace std;
 
 enum SnowType{
-    man;
-    ball;
+    man,
+    ball
 };
 
 class Snow{
@@ -35,5 +35,5 @@ public:
     
     virtual void snowOperate();
     
-}
+};
 #endif /* snow_h */
