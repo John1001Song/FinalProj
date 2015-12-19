@@ -28,10 +28,10 @@ public:
     
     SnowType snowType;
     int HP;
-    Vector3D pos[3];
+    Vector3D pos;
     float speed;
     Vector3D dir;
-    Vector3D acc[3];//accelerate
+    Vector3D acc;//accelerate
     
     virtual void snowOperate();
     
