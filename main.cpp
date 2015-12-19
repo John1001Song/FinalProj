@@ -17,22 +17,55 @@
 #endif
 
 #include "structs.h"
-#include "snowMan.cpp"
-#include "snowBall.cpp"
+#include "snowMan.h"
+#include "snowBall.h"
+#include "snow.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
+using namespace std;
 
-void keyboard(unsigned char key, int x, int y){}
+float camPos[] = {5, 5, 10};
+
+void keyboard(unsigned char key, int x, int y){
+    switch (key) {
+        case 'q':
+        case 'Q':
+            exit(0);
+            break;
+            
+        default:
+            break;
+    }
+    
+    glutPostRedisplay();
+}
 
 void special(int key, int x, int y){}
 
 void mouse(int button, int state, int x, int y){}
 
-void init(){}
+void init(){
+    glClearColor(0, 0, 0, 0);
+    glColor3f(1, 1, 1);
+    
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(45, 1, 1, 100);
+}
 
-void display(){}
+void display(){
+    float origin[3] = {0, 0, 0};
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
+    gluLookAt(camPos[0], camPos[1], camPos[2], 0, 0, 0, 0, 1, 0);
+    glColor3f(1, 1, 1);
+    
+    glutSwapBuffers();
+}
 
 int main(int argc, char ** argv){
     
