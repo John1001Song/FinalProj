@@ -17,5 +17,4 @@ Snow::Snow(){
 
 
 //function needs to be overridden in child classes
-void Snow::snowOperate0(){}
-void Snow::snowOperate1(){}
+void Snow::draw(){}

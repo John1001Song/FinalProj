@@ -26,5 +26,7 @@ public:
     int size; // use size to represent the snowball power; the bigger size, the more power
     
     void draw();//draw a snowball
+    
+    bool checkDis();//this func is used for check distance between this snowball and other snowmen
 };
 #endif /* snowBall_h */

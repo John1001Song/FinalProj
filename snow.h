@@ -33,7 +33,6 @@ public:
     Vector3D dir;
     Vector3D acc;//accelerate
     
-    virtual void snowOperate0();
-    virtual void snowOperate1();
+    virtual void draw();
 };
 #endif /* snow_h */
