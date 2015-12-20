@@ -23,6 +23,8 @@ class Snow{
 public:
     Snow(); // constructor
     
+    virtual ~Snow();
+    
     void setType(SnowType t);
     SnowType getType();
     

@@ -24,6 +24,8 @@ Snow::Snow(){
     acc[2] = 0;
 }
 
+Snow::~Snow(){}
+
 float* Snow::getDir() {
     return dir;
 }

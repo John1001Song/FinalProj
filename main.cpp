@@ -19,9 +19,13 @@
 #include "snowMan.h"
 #include "snowBall.h"
 #include "snow.h"
+#include "Game.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
+SnowMan* players = new SnowMan(player);
 
 //an array for iamge data
 GLubyte* image;
@@ -189,6 +193,8 @@ void display(){
     drawAxis();
     //draw the sky
     drawSky();
+    
+    
     
     glutSwapBuffers();
     glutPostRedisplay();

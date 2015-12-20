@@ -15,6 +15,7 @@
 using namespace std;
 
 static int LIFE = 2000;
+static float SnowBallSpeed = 0.1;
 
 class SnowBall: public Snow{
 public:
@@ -27,7 +28,7 @@ public:
 	//bool is_Hit(float* target, int size);
 
 	static void normalize(float* vec);
-    bool checkDis();//this func is used for check distance between this snowball and other snowmen
+    static float checkDis(float *origin, float *target);//this func is used for check distance between this snowball and other snowmen
     
     void draw();
     
@@ -39,7 +40,6 @@ private:
     float time;
     int size; // use size to represent the snowball power; the bigger size, the more power
     
-//    void draw();//draw a snowball
-    
+    float speed;
 };
 #endif /* snowBall_h */
