@@ -11,9 +11,6 @@
 
 #include <stdio.h>
 #include "snow.h"
-#include "structs.h"
-
-
 
 using namespace std;
 
@@ -47,7 +44,7 @@ public:
 
 	static void normalize(float* vec);
     
-    Vector3D color;
+    float* color;
     
     //each snowball has a life based on time.
     //EX: after 10s, if the snowball does not hit, it disappears

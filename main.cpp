@@ -16,7 +16,6 @@
 #  include <GL/freeglut.h>
 #endif
 
-#include "structs.h"
 #include "snowMan.h"
 #include "snowBall.h"
 #include "snow.h"

@@ -13,7 +13,6 @@
 //it is a template class for other sub-type class: snowman, snowball, player
 
 #include <vector>
-#include "structs.h"
 
 using namespace std;
 
@@ -28,10 +27,10 @@ public:
     
     SnowType snowType;
     int HP;
-    Vector3D pos;
+    float* pos;
     float speed;
-    Vector3D dir;
-    Vector3D acc;//accelerate
+    float* dir;
+    float* acc;//accelerate
     
     virtual void draw();
 };
