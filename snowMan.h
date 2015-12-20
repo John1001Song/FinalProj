@@ -23,6 +23,7 @@ enum ManType{
 
 class SnowMan:public Snow{
 public:
+    SnowMan();
     SnowMan(ManType whatType);//constructor
     ManType manType;
     

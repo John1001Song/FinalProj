@@ -34,6 +34,7 @@ int width, height, max;
 using namespace std;
 
 float camPos[] = {5, 5, 10};
+float light_pos[] = {5, 10, 5, 1};
 
 static int MAX_SNOWBALLS = 100;
 static int MAX_AIs = 10;
@@ -42,7 +43,6 @@ float angle = 0;
 int numbOfSnowBall = 0;
 int numbOfAIs = 0;
 int countr;
-
 
 
 
@@ -168,6 +168,8 @@ void keyboard(unsigned char key, int x, int y){
             exit(0);
             break;
             
+            
+        
         default:
             break;
     }

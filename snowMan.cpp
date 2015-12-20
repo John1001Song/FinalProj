@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 float cols[6][3] = { {1,0,0}, {0,1,1}, {1,1,0}, {0,1,0}, {0,0,1}, {1,0,1} };
 float AI_pos[] = {2,1,-3};
@@ -312,16 +313,23 @@ void DrawBigSnowman(float* pos, float* rot)
 
 
 //caution: how could i initial the Snowman and set it type "man" when it inherits from Snow
-SnowMan::SnowMan(ManType whatType){
-    setType(man);
-    manType = whatType;
+
+SnowMan::SnowMan(){
+    //this random func is used for creating a random AI in the scene
+    srand(time(NULL));
+    pos[0] = rand() % 20;
+    pos[1] = 0;
+    pos[2] = rand() % 30;
+    
+    size = rand() % 3;
+    
+    dir[0] = 0;
+    dir[1] = 0;
+    dir[2] = 0;
+    
+    angle = rand() % 180;
 }
 
-/*
-SnowMan::SnowMan : Snow(){
-
-}
-*/
 void SnowMan::draw(){
     switch (manType) {
         case smallAI:
