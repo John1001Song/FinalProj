@@ -12,8 +12,6 @@
 //snow class
 //it is a template class for other sub-type class: snowman, snowball, player
 
-#include <vector>
-
 using namespace std;
 
 enum SnowType{
@@ -23,15 +21,34 @@ enum SnowType{
 
 class Snow{
 public:
-    Snow();//constructor
+    Snow(); // constructor
     
-    SnowType snowType;
-    int HP;
-    float pos[3];
-    float speed;
-    float dir[3];
-    float acc[3];//accelerate
+    void setType(SnowType t);
+    SnowType getType();
+    
+    int getHP() const;
+    void setHP(int hp);
+    
+    float getSpeed() const;
+    void setSpeed(float speed);
+    
+    float* getPos();
+    void setPos(float* position);
+    
+    void setDir(float* direction);
+    float* getDir();
+    
+    void setAcc(float* direction);
+    float* getAcc();
     
     virtual void draw();
+    
+private:
+    SnowType type;
+    int HP;
+    float speed;
+    float pos[3];
+    float dir[3];
+    float acc[3]; // acceleration
 };
 #endif /* snow_h */
