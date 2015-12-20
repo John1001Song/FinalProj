@@ -18,3 +18,10 @@
 
 #include "snowBall.h"
 
+SnowBall::SnowBall() : Snow() {
+    color[0] = 1;
+    color[1] = 0;
+    color[2] = 0;
+    time = 2000;
+    size = 1;
+}
