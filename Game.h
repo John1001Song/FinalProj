@@ -9,6 +9,6 @@
 #include "SnowBall.h"
 #include "SnowMan.h"
 
-extern vector<SnowBall> SnowBallListAI;
-extern vector<SnowBall> SnowBallListPlayer;
-extern vector<SnowMan> SnowManList;
+extern vector<SnowBall>* SnowBallListAI;
+extern vector<SnowBall>* SnowBallListPlayer;
+extern vector<SnowMan>* SnowManList;

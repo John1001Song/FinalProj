@@ -7,3 +7,7 @@
 //
 
 #include "Game.h"
+
+vector<SnowBall>* SnowBallListAI = new vector<SnowBall>();
+vector<SnowBall>* SnowBallListPlayer = new vector<SnowBall>();
+vector<SnowMan>* SnowManList = new vector<SnowMan>;
