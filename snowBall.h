@@ -29,6 +29,8 @@ public:
 	static void normalize(float* vec);
     bool checkDis();//this func is used for check distance between this snowball and other snowmen
     
+    void draw();
+    
 private:
     float color[3];
     

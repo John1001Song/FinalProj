@@ -20,3 +20,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+
+SnowMan::SnowMan(ManType whatType){
+    setType(man);
+    manType = whatType;
+}
+
+void SnowMan::draw(){
+    switch (manType) {
+        case smallAI:
+            
+            break;
+            
+        case mediumAI:
+            break;
+            
+        case largeAI:
+            break;
+            
+        case player:
+            break;
+            
+        default:
+            break;
+    }
+}

@@ -24,7 +24,7 @@ public:
     SnowMan(ManType whatType);//constructor
     ManType manType;
     
-    //we could use snowOperate0() to draw different size snowman base on its type
+    //we could use draw() to draw different size snowman base on its type
     virtual void draw();
     
     //we could use snowOperate1() to let snowman shoots snowball

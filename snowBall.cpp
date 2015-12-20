@@ -25,3 +25,7 @@ SnowBall::SnowBall() : Snow() {
     time = 2000;
     size = 1;
 }
+
+void SnowBall::draw(){
+    glutSolidSphere(0.5, 10, 10);
+}
