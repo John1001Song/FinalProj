@@ -32,19 +32,12 @@ public:
     //we could use fire() to let snowman shoots snowball
     void fire();
     
-    void setPos(float *pos);
-    float* getPos();
-    
-    void setDir(float *dir);
-    float* getDir();
-    
-    void setAngle(float angle);
-    float getAngle();
-    
     void update();
     
+    float getAngle();
+    void setAngle(float angle);
     
-    
+    void setDirInAngle(float someAngle);
     
 private:
     float pos[3];
