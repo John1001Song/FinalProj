@@ -7,7 +7,11 @@
 //
 
 #include "Game.h"
-
+//this is a list of snowballs shot by all AIs
 vector<SnowBall>* SnowBallListAI = new vector<SnowBall>();
+
+//this is a list of snowballs shot by player
 vector<SnowBall>* SnowBallListPlayer = new vector<SnowBall>();
+
+//this is a list of snowmans who are AIs
 vector<SnowMan>* SnowManList = new vector<SnowMan>;

@@ -147,6 +147,168 @@ void DrawSnowman(float* pos, float* rot)
     glPopMatrix();//snowman
 }
 
+void DrawSmallSnowman(float* pos, float* rot)
+{
+    glPushMatrix();
+    
+    glTranslatef(AI_pos[0], AI_pos[1], AI_pos[2]);
+    glRotatef(AI_rot[1], 0, 1, 0);
+    
+    //draw body
+    glColor3f(1,1,1); // color for body
+    glutSolidSphere(1, 16, 16);
+    glScalef(1, 1, 1);
+    
+    // left arm
+    glPushMatrix();
+    glTranslatef(0.5, 0.5, 0.9);
+    glScalef(0.1, 1, 1);
+    glColor3f(1, 0, 0);
+    glutSolidSphere(0.5, 10, 10);
+    glPopMatrix();
+    
+    // right arm
+    glPushMatrix();
+    glTranslatef(-0.5, 0.5, 0.9);
+    glScalef(0.1, 1, 1);
+    glColor3f(1, 0, 0);
+    glutSolidSphere(0.5, 10, 10);
+    glPopMatrix();
+    
+    //draw buttons
+    glPushMatrix();
+    glTranslatef(0, 0.35, 0.9);
+    glColor3f(0, 0, 0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(0, 0.15, 0.95);
+    glColor3f(0, 0, 0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(0, -0.05, 0.95);
+    glColor3f(0, 0, 0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    
+    glPushMatrix();
+    //translate relative to body, and draw head
+    glTranslatef(0, 1.25, 0);
+    glRotatef(headRot[1], 0, 1, 0); //turn the head relative to the body
+    glColor3f(1,1,1);
+    glutSolidSphere(0.5, 16, 16);
+    
+    //translate and draw right eye
+    glPushMatrix();
+    glTranslatef(0.2, 0.15, 0.45);
+    glColor3f(0,0,0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    //translate and draw left eye
+    glPushMatrix();
+    glTranslatef(-0.2, 0.15, 0.45);
+    glColor3f(0,0,0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    //translate and draw nose
+    glPushMatrix();
+    glTranslatef(0, 0, 0.5);
+    glColor3f(1,0.4,0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    glPopMatrix();//body
+    glPopMatrix();//snowman
+}
+
+void DrawBigSnowman(float* pos, float* rot)
+{
+    glPushMatrix();
+    
+    glTranslatef(AI_pos[0]-6, AI_pos[1], AI_pos[2]-2);
+    glRotatef(AI_rot[1], 0, 1, 0);
+    
+    //draw body
+    glColor3f(1,1,1); // color for body
+    glutSolidSphere(1, 16, 16);
+    glScalef(0.5, 1, 1);
+    
+    // left arm
+    glPushMatrix();
+    glTranslatef(0.5, 0.5, 0.9);
+    glScalef(0.1, 1, 1);
+    glColor3f(1, 0, 0);
+    glutSolidSphere(0.5, 10, 10);
+    glPopMatrix();
+    
+    // right arm
+    glPushMatrix();
+    glTranslatef(-0.5, 0.5, 0.9);
+    glScalef(0.1, 1, 1);
+    glColor3f(1, 0, 0);
+    glutSolidSphere(0.5, 10, 10);
+    glPopMatrix();
+    
+    //draw buttons
+    glPushMatrix();
+    glTranslatef(0, 0.35, 0.9);
+    glColor3f(0, 0, 0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(0, 0.15, 0.95);
+    glColor3f(0, 0, 0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslatef(0, -0.05, 0.95);
+    glColor3f(0, 0, 0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    
+    glPushMatrix();
+    //translate relative to body, and draw head
+    glTranslatef(0, 1.25, 0);
+    glRotatef(headRot[1], 0, 1, 0); //turn the head relative to the body
+    glColor3f(1,1,1);
+    glutSolidSphere(0.5, 16, 16);
+    glScalef(0.5, 1, 1);
+    
+    //translate and draw right eye
+    glPushMatrix();
+    glTranslatef(0.2, 0.15, 0.45);
+    glColor3f(0,0,0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    //translate and draw left eye
+    glPushMatrix();
+    glTranslatef(-0.2, 0.15, 0.45);
+    glColor3f(0,0,0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    //translate and draw nose
+    glPushMatrix();
+    glTranslatef(0, 0, 0.5);
+    glColor3f(1,0.4,0);
+    glutSolidSphere(0.1, 10, 10);
+    glPopMatrix();
+    
+    glPopMatrix();//body
+    glPopMatrix();//snowman
+}
+
+
 //caution: how could i initial the Snowman and set it type "man" when it inherits from Snow
 SnowMan::SnowMan(ManType whatType){
     setType(man);

@@ -35,6 +35,18 @@ using namespace std;
 
 float camPos[] = {5, 5, 10};
 
+static int MAX_SNOWBALLS = 100;
+static int MAX_AIs = 10;
+
+float angle = 0;
+int numbOfSnowBall = 0;
+int numbOfAIs = 0;
+int countr;
+
+
+
+
+
 /* LoadPPM -- loads the specified ppm file, and returns the image data as a GLubyte
  *  (unsigned byte) array. Also returns the width and height of the image, and the
  *  maximum colour value by way of arguments
@@ -167,7 +179,12 @@ void special(int key, int x, int y){}
 
 void mouse(int button, int state, int x, int y){}
 
-void idle(){}
+void idle(){
+    countr++;
+    
+    
+    
+}
 
 void init(){
     glClearColor(0, 0, 0, 0);
