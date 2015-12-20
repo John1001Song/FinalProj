@@ -24,6 +24,8 @@
 #include <math.h>
 
 float cols[6][3] = { {1,0,0}, {0,1,1}, {1,1,0}, {0,1,0}, {0,0,1}, {1,0,1} };
+float AI_pos[] = {2,1,-3};
+float AI_rot[] = {0, 0, 0};
 float pos[] = {0,1,0};
 float rot[] = {0, 0, 0};
 float headRot[] = {0, 0, 0};

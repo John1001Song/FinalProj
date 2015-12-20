@@ -14,7 +14,7 @@
 
 using namespace std;
 
-static int LIFE = 2000;
+static int SnowBallLife = 2000;//asume the snowball could fly for 2000s
 static float SnowBallSpeed = 0.1;
 
 class SnowBall: public Snow{
@@ -30,6 +30,7 @@ public:
 	static void normalize(float* vec);
     static float checkDis(float *origin, float *target);//this func is used for check distance between this snowball and other snowmen
     
+    bool isHit(float *object, int size);
     void draw();
     
 private:

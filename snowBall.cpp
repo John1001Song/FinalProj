@@ -17,6 +17,8 @@
 #endif
 
 #include "snowBall.h"
+#include "snow.h"
+
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -63,6 +65,20 @@ void SnowBall::update(){
     tempPos[2] = tempPos[2] + tempSpeed * tempDir[2];
     
     setPos(tempPos);
+}
+
+bool SnowBall::isHit(float *object, int size){
+    //check the distance between current snowball and the target snowman
+    float tempDis;
+    tempDis = checkDis(getPos(), object);
+    
+    float tempSize;
+    tempSize = this->size + size;
+    
+    bool result;
+    
+    result = (tempSize >= tempDis);
+    return result;
 }
 
 void SnowBall::draw(){

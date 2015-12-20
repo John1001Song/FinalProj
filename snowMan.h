@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "snow.h"
 
+static float SNOWMAN_SPEED = 0.01;
+
 enum ManType{
     smallAI,
     mediumAI,
