@@ -124,6 +124,27 @@ void drawSky(){
 
 }
 
+/* drawAxis() -- draws an axis at the origin of the coordinate system
+ *   red = +X axis, green = +Y axis, blue = +Z axis
+ */
+//draw axis to find XYZ direction
+void drawAxis()
+{
+    glBegin(GL_LINES);
+    glColor3f(1, 0, 0);
+    glVertex3f(0,0,0);
+    glVertex3f(500,0,0);
+    
+    glColor3f(0,1,0);
+    glVertex3f(0,0,0);
+    glVertex3f(0,500,0);
+    
+    glColor3f(0,0,1);
+    glVertex3f(0,0,0);
+    glVertex3f(0,0,500);
+    glEnd();
+}
+
 void keyboard(unsigned char key, int x, int y){
     switch (key) {
         case 'q':
@@ -164,6 +185,8 @@ void display(){
     
     gluLookAt(camPos[0], camPos[1], camPos[2], 0, 0, 0, 0, 1, 0);
     glColor3f(1, 1, 1);
+    
+    drawAxis();
     
     glutSwapBuffers();
 }
