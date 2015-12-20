@@ -27,10 +27,10 @@ public:
     
     SnowType snowType;
     int HP;
-    float* pos;
+    float pos[3];
     float speed;
-    float* dir;
-    float* acc;//accelerate
+    float dir[3];
+    float acc[3];//accelerate
     
     virtual void draw();
 };
