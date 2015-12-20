@@ -314,6 +314,11 @@ void DrawBigSnowman(float* pos, float* rot)
 
 //caution: how could i initial the Snowman and set it type "man" when it inherits from Snow
 
+SnowMan::SnowMan(ManType whatType){
+    snowType = man;
+    manType = whatType;
+}
+
 SnowMan::SnowMan(){
     //this random func is used for creating a random AI in the scene
     srand(time(NULL));
