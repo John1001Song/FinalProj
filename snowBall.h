@@ -14,8 +14,6 @@
 #include "structs.h"
 
 
-#ifndef _BULLET_H_
-#define _BULLET_H_
 
 using namespace std;
 
@@ -26,7 +24,6 @@ public:
     SnowBall();//constructor
 	
 	SnowBall(float *origin, float* dir);
-	virtual ~Snowball();
 	
 	/* May or may not need the follow function*/
 	void set_Dir(float* direction);
@@ -35,8 +32,8 @@ public:
 	float* get_Pos();
 	void set_Pos(float* position);
 
-	int get_Size() const;
-	void set_Size(int size);
+	//int get_Size() const;
+	//void set_Size(int size);
 
 	float get_Speed() const;
 	void set_Speed(float speed);
@@ -46,7 +43,7 @@ public:
 
 	void update();//update snowball as it travels may or may not need this
 
-	bool is_Hit(float* target, int size);
+	//bool is_Hit(float* target, int size);
 
 	static void normalize(float* vec);
     
@@ -65,7 +62,6 @@ public:
 	
 private:
 	float position[3];
-	int size;
 	float direction[3];
 	float speed;
 	int life;
