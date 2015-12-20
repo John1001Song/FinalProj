@@ -107,16 +107,16 @@ void drawSky(){
     glColor3f(.5,.5,.5);
     
     glTexCoord2f(0, 0);
-    glVertex3f(-1,-1,1);
+    glVertex3f(-10,10,-10);
     
     glTexCoord2f(1, 1);
-    glVertex3f(1,-1,1);
+    glVertex3f(10,10,10);
     
     glTexCoord2f(0, 1);
-    glVertex3f(1,-1,-1);
+    glVertex3f(-10,10,10);
     
     glTexCoord2f(1, 0);
-    glVertex3f(-1,-1,-1);
+    glVertex3f(10,10,-10);
     
     glEnd();
     
@@ -187,8 +187,11 @@ void display(){
     glColor3f(1, 1, 1);
     
     drawAxis();
+    //draw the sky
+    drawSky();
     
     glutSwapBuffers();
+    glutPostRedisplay();
 }
 
 int main(int argc, char ** argv){
@@ -203,6 +206,10 @@ int main(int argc, char ** argv){
     glutCreateWindow("Snowman fighting");
     
     glEnable(GL_DEPTH_TEST);
+    
+    //image = LoadPPM("sky-3.ppm", &width, &height, &max);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB,
+                 GL_UNSIGNED_BYTE, image);
     
     glutDisplayFunc(display);
     glutKeyboardFunc(keyboard);
