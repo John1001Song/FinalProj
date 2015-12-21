@@ -36,7 +36,8 @@ using namespace std;
 
 float camPos[] = {5, 5, 10};
 float light_pos[] = {5, 10, 5, 0};
-float playerPos[] = {0,0,0};
+float playerPos[] = {0, 0, 0};
+float playerDir[] = {0, 0, 0};
 float playerAngle = 0;
 
 static int MAX_SNOWBALLS = 100;
@@ -46,12 +47,24 @@ int numbOfSnowBall = 0;
 int numbOfAIs = 0;
 int countr;
 
+//material parameters
+float m_amb[] = {.33, .22, .03, 1.0};
+float m_diff[] = {.78, .57, .11, 1.0};
+float m_spec[] = {.99, .91, .91, 1.0};
+float shiny = 27.8;
+
 //this func is to update player's position and direction in real time
 void PlayerPnD(){
     float *tempPos = player0->getPos();
     playerPos[0] = tempPos[0];
     playerPos[1] = tempPos[1];
     playerPos[2] = tempPos[2];
+    
+    float *tempDir = player0->getDir();
+    playerDir[0] = tempDir[0];
+    playerDir[1] = tempDir[1];
+    playerDir[2] = tempDir[2];
+    
     playerAngle = player0->getAngle();
 }
 
@@ -85,9 +98,18 @@ void keyboard(unsigned char key, int x, int y){
             
         case 'w':
         case 'W':
-            playerPos[0] = player0->getPos()[0] + 0.1;
+            playerPos[0] = player0->getPos()[0];
             playerPos[1] = player0->getPos()[1];
             playerPos[2] = player0->getPos()[2];
+            
+            playerDir[0] = player0->getDir()[0];
+            playerDir[1] = player0->getDir()[1];
+            playerDir[2] = player0->getDir()[2];
+            
+            playerPos[0] += playerDir[0];
+            playerPos[1] += playerDir[1];
+            playerPos[2] += playerDir[2];
+            
             player0->setPos(playerPos);
             break;
             
@@ -220,6 +242,16 @@ void display(){
     
     drawAxis();
     
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, m_amb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, m_diff);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, m_spec);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shiny);
+    
+    PlayerPnD();
+    player0->DrawSnowman(playerPos, playerAngle);
+    
+    
+    
     
     glutSwapBuffers();
     glutPostRedisplay();
@@ -242,7 +274,7 @@ int main(int argc, char ** argv){
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(special);
     glutMouseFunc(mouse);
-    glutIdleFunc(idle);
+    //glutIdleFunc(idle);
     
     
     init();

@@ -32,7 +32,7 @@ float headRot[] = {0, 0, 0};
 float size;
 
 
-void DrawSnowman(float* pos, float angle)
+void SnowMan::DrawSnowman(float* pos, float angle)
 {
     glPushMatrix();
     
@@ -306,7 +306,7 @@ void SnowMan::draw(){
             
         case mediumAI:
             setSize(2.0);
-            //DrawSnowman(getPos(), getAngle());
+            DrawSnowman(getPos(), getAngle());
             break;
             
         case largeAI:
