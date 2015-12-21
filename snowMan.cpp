@@ -27,55 +27,17 @@
 float cols[6][3] = { {1,0,0}, {0,1,1}, {1,1,0}, {0,1,0}, {0,0,1}, {1,0,1} };
 float AI_pos[] = {2,1,-3};
 float AI_rot[] = {0, 0, 0};
-float pos[] = {0,1,0};
-float rot[] = {0, 0, 0};
 float headRot[] = {0, 0, 0};
 
 float size;
 
-/* drawPolygon - takes 4 indices and an array of vertices
- *   and draws a polygon using the vertices indexed by the indices
- */
-void drawPolygon(int a, int b, int c, int d, float v[8][3]){
-    glBegin(GL_POLYGON);
-    glVertex3fv(v[a]);
-    glVertex3fv(v[b]);
-    glVertex3fv(v[c]);
-    glVertex3fv(v[d]);
-    glEnd();
-}
 
-
-/* cube - takes an array of 8 vertices, and draws 6 faces
- *  with drawPolygon, making up a box
- */
-void cube(float v[8][3])
-{
-    glColor3fv(cols[1]);
-    drawPolygon(0, 3, 2, 1, v);
-    
-    glColor3fv(cols[2]);
-    drawPolygon(1, 0, 4, 5, v);
-    
-    glColor3fv(cols[3]);
-    drawPolygon(5, 1, 2, 6, v);
-    
-    glColor3fv(cols[4]);
-    drawPolygon(2, 3, 7, 6, v);
-    
-    glColor3fv(cols[5]);
-    drawPolygon(6, 5, 4, 7, v);
-    
-    glColor3fv(cols[0]);
-    drawPolygon(4, 0, 3, 7, v);
-}
-
-void DrawSnowman(float* pos, float* rot)
+void DrawSnowman(float* pos, float angle)
 {
     glPushMatrix();
     
     glTranslatef(pos[0], pos[1], pos[2]);
-    glRotatef(rot[1], 0, 1, 0);
+    glRotatef(angle, 0, 1, 0);
     
     //draw body
     glColor3f(1,1,1); // color for body
@@ -339,22 +301,22 @@ void SnowMan::draw(){
     switch (manType) {
         case smallAI:
             setSize(1.0);
-            DrawSnowman(getPos(), rot);
+            //DrawSmallSnowman(getPos(), rot);
             break;
             
         case mediumAI:
             setSize(2.0);
-            DrawSnowman(getPos(), rot);
+            //DrawSnowman(getPos(), getAngle());
             break;
             
         case largeAI:
             setSize(3.0);
-            DrawSnowman(getPos(), rot);
+            //DrawBigSnowman(getPos(), rot);
             break;
             
         case player:
             setSize(1.0);
-            DrawSnowman(getPos(), rot);
+            //DrawSnowman(getPos(), getAngle());
             break;
             
         default:

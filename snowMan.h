@@ -43,6 +43,8 @@ public:
     void setDirInAngle(float someAngle);
     static float transfAngToNumb(float angle);
     
+    void DrawSnowman(float *pos, float angle);
+    
 private:
     float pos[3];
     float dir[3];

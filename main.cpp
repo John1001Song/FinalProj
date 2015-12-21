@@ -35,17 +35,25 @@ int width, height, max;
 using namespace std;
 
 float camPos[] = {5, 5, 10};
-float light_pos[] = {5, 10, 5, 1};
+float light_pos[] = {5, 10, 5, 0};
+float playerPos[] = {0,0,0};
+float playerAngle = 0;
+
 static int MAX_SNOWBALLS = 100;
 static int MAX_AIs = 10;
 
-float angle = 0;
 int numbOfSnowBall = 0;
 int numbOfAIs = 0;
 int countr;
 
-
-
+//this func is to update player's position and direction in real time
+void PlayerPnD(){
+    float *tempPos = player0->getPos();
+    playerPos[0] = tempPos[0];
+    playerPos[1] = tempPos[1];
+    playerPos[2] = tempPos[2];
+    playerAngle = player0->getAngle();
+}
 
 /* drawAxis() -- draws an axis at the origin of the coordinate system
  *   red = +X axis, green = +Y axis, blue = +Z axis
@@ -77,20 +85,51 @@ void keyboard(unsigned char key, int x, int y){
             
         case 'w':
         case 'W':
+            playerPos[0] = player0->getPos()[0] + 0.1;
+            playerPos[1] = player0->getPos()[1];
+            playerPos[2] = player0->getPos()[2];
+            player0->setPos(playerPos);
             break;
             
         case 'a':
         case 'A':
+        {
+            float tempAngle = player0->getAngle();
+            tempAngle += 1;
+            player0->setAngle(tempAngle);
             break;
+        }
             
         case 's':
         case 'S':
+            playerPos[0] = player0->getPos()[0] - 0.1;
+            playerPos[1] = player0->getPos()[1];
+            playerPos[2] = player0->getPos()[2];
+            player0->setPos(playerPos);
             break;
         
         case 'd':
         case 'D':
+        {
+            float tempAngle = player0->getAngle();
+            tempAngle -= 1;
+            player0->setAngle(tempAngle);
+            break;
+        }
+         
+        //press v to change first person or third person view
+        case 'v':
+        case 'V':
+            
             break;
         
+            
+        case 'z':
+            if (numbOfSnowBall < MAX_SNOWBALLS) {
+                SnowBall sBall = *new SnowBall(player0->getPos(), player0->getDir());
+                SnowBallList_Player->push_back(sBall);
+                numbOfSnowBall++;
+            }
         default:
             break;
     }
@@ -98,7 +137,11 @@ void keyboard(unsigned char key, int x, int y){
     glutPostRedisplay();
 }
 
-void special(int key, int x, int y){}
+void special(int key, int x, int y){
+    
+    
+    glutPostRedisplay();
+}
 
 void mouse(int button, int state, int x, int y){}
 
@@ -152,11 +195,17 @@ void init(){
     glLoadIdentity();
     gluPerspective(45, 1, 1, 100);
     
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
+    
+    float amb[4] = {1, 1, 1, 1};
+    float diff[4] = {.5, .5, .5, 1};
+    float spec[4] = {0, 0, 0, 1};
+    
+    glLightfv(GL_LIGHT1, GL_POSITION, light_pos);
+    glLightfv(GL_LIGHT1, GL_DIFFUSE, diff);
+    glLightfv(GL_LIGHT1, GL_AMBIENT, amb);
+    glLightfv(GL_LIGHT1, GL_SPECULAR, spec);
     
 }
 
