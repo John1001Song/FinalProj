@@ -23,8 +23,8 @@ enum ManType{
 
 class SnowMan:public Snow{
 public:
-    SnowMan();//constructor
-    SnowMan(ManType whatType);
+    SnowMan();
+    SnowMan(ManType whatType);//constructor
     ManType manType;
     
     virtual ~SnowMan();//deconstructor
@@ -41,6 +41,7 @@ public:
     void setAngle(float angle);
     
     void setDirInAngle(float someAngle);
+    static float transfAngToNumb(float angle);
     
 private:
     float pos[3];

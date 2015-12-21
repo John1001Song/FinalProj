@@ -401,3 +401,8 @@ void SnowMan::setDirInAngle(float someAngle){
     setDir(tempDir);
 }
 
+float SnowMan::transfAngToNumb(float angle){
+    float tempResult = angle * 3.1415926 / 180;
+    return tempResult;
+}
+
