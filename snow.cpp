@@ -72,6 +72,14 @@ void Snow::setHP(int hp){
     this->HP = hp;
 }
 
+float Snow::getSize() const {
+    return size;
+}
+
+void Snow::setSize(float size){
+    this->size = size;
+}
+
 void Snow::setType(SnowType t) {
     type = t;
 }

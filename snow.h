@@ -33,6 +33,9 @@ public:
     int getHP() const;
     void setHP(int hp);
     
+    float getSize() const;
+    void setSize(float size);
+    
     float getSpeed() const;
     void setSpeed(float speed);
     
@@ -50,6 +53,7 @@ public:
 private:
     SnowType type;
     int HP;
+    float size;
     float speed;
     float pos[3];
     float dir[3];

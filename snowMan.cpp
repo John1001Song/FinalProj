@@ -326,7 +326,7 @@ SnowMan::SnowMan(){
     pos[1] = 0;
     pos[2] = rand() % 30;
     
-    size = rand() % 3;
+    setSize(rand() % 3);
     
     dir[0] = 0;
     dir[1] = 0;
@@ -338,22 +338,22 @@ SnowMan::SnowMan(){
 void SnowMan::draw(){
     switch (manType) {
         case smallAI:
-            size = 1;
+            setSize(1.0);
             DrawSnowman(getPos(), rot);
             break;
             
         case mediumAI:
-            size = 2;
+            setSize(2.0);
             DrawSnowman(getPos(), rot);
             break;
             
         case largeAI:
-            size = 3;
+            setSize(3.0);
             DrawSnowman(getPos(), rot);
             break;
             
         case player:
-            size = 1;
+            setSize(1.0);
             DrawSnowman(getPos(), rot);
             break;
             

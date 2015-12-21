@@ -25,7 +25,8 @@
 #include <stdlib.h>
 #include <math.h>
 
-SnowMan* players = new SnowMan(player);
+SnowMan* player0 = new SnowMan();
+
 
 //an array for iamge data
 GLubyte* image;
@@ -168,7 +169,21 @@ void keyboard(unsigned char key, int x, int y){
             exit(0);
             break;
             
+        case 'w':
+        case 'W':
+            break;
             
+        case 'a':
+        case 'A':
+            break;
+            
+        case 's':
+        case 'S':
+            break;
+        
+        case 'd':
+        case 'D':
+            break;
         
         default:
             break;
@@ -184,7 +199,42 @@ void mouse(int button, int state, int x, int y){}
 void idle(){
     countr++;
     
+    //every 15s there will be a new AI appear
+    while ((countr % 15) == 0) {
+        if (numbOfAIs < MAX_AIs) {
+            SnowManList->push_back(*new SnowMan());
+            numbOfAIs++;
+        }
+    }
     
+    //update snowballs and check if they have a hit on the snowmans
+    
+    //create iterator to check each snowball shot by player, if this snowball hit some AI
+    for (vector<SnowBall>::iterator iter = SnowBallList_Player->begin(); iter != SnowBallList_Player->end(); iter++) {
+        
+        if (iter->getHP() >= 0) {
+            iter->update();
+            
+            for (vector<SnowMan>::iterator i = SnowManList->begin();i != SnowManList->end(); i++) {
+                bool hit = iter->isHit(i->getPos(), i->getSize());
+                if (hit) {
+                    iter->setHP(1);
+                    SnowManList->erase(i);
+                    numbOfAIs--;
+                    break;
+                }
+                
+            }
+            
+        }else{
+            numbOfSnowBall--;
+            SnowBallList_Player->erase(iter);
+        }
+    }
+    
+    player0->update();
+    
+    glutPostRedisplay();
     
 }
 
@@ -198,6 +248,10 @@ void init(){
     
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    
 }
 
 void display(){
