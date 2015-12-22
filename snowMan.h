@@ -14,6 +14,8 @@
 
 static float SNOWMAN_SPEED = 0.01;
 
+//there are two kind of snowmans: AI and Player
+//AI contains small, medium, and large size
 enum ManType{
     smallAI,
     mediumAI,
@@ -35,14 +37,18 @@ public:
     //we could use fire() to let snowman shoots snowball
     void fire();
     
+    //update the snowman position and direction
     void update();
     
+    //use angle to let the snowman change direction
     float getAngle();
     void setAngle(float angle);
     
     void setDirInAngle(float someAngle);
+    //change the angle from degree to number
     static float transfAngToNumb(float angle);
     
+    //draw the snowman
     void DrawSnowman(float *pos, float angle);
     
 private:

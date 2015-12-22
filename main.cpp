@@ -25,8 +25,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+//create player
 SnowMan* player0 = new SnowMan();
-
 
 //an array for iamge data
 GLubyte* image;
@@ -36,6 +36,8 @@ using namespace std;
 
 float camPos[] = {5, 5, 10};
 float light_pos[] = {5, 10, 5, 0};
+
+//player's status
 float playerPos[] = {0, 0, 0};
 float playerDir[] = {0, 0, 0};
 float playerAngle = 0;
@@ -43,8 +45,11 @@ float playerAngle = 0;
 static int MAX_SNOWBALLS = 100;
 static int MAX_AIs = 10;
 
+//record how many snowballs have been shot
 int numbOfSnowBall = 0;
+//record how many AI snowman
 int numbOfAIs = 0;
+//counter used in idle func
 int countr;
 
 //material parameters
@@ -95,7 +100,8 @@ void keyboard(unsigned char key, int x, int y){
         case 'Q':
             exit(0);
             break;
-            
+        
+        //player snowman move forawrd based on his direction
         case 'w':
         case 'W':
             playerPos[0] = player0->getPos()[0];
@@ -112,7 +118,8 @@ void keyboard(unsigned char key, int x, int y){
             
             player0->setPos(playerPos);
             break;
-            
+        
+        //player snowman turns left
         case 'a':
         case 'A':
         {
@@ -121,7 +128,8 @@ void keyboard(unsigned char key, int x, int y){
             player0->setAngle(tempAngle);
             break;
         }
-            
+         
+        //player snowman moves backward
         case 's':
         case 'S':
             playerPos[0] = player0->getPos()[0] - 0.1;
@@ -130,6 +138,7 @@ void keyboard(unsigned char key, int x, int y){
             player0->setPos(playerPos);
             break;
         
+        //player snowman turns right
         case 'd':
         case 'D':
         {
@@ -145,9 +154,10 @@ void keyboard(unsigned char key, int x, int y){
             
             break;
         
-            
+        //press z to shoot snowballs
         case 'z':
             if (numbOfSnowBall < MAX_SNOWBALLS) {
+                //create new snowball
                 SnowBall sBall = *new SnowBall(player0->getPos(), player0->getDir());
                 SnowBallList_Player->push_back(sBall);
                 numbOfSnowBall++;
@@ -179,18 +189,17 @@ void idle(){
     }
     
     //update snowballs and check if they have a hit on the snowmans
-    
     //create iterator to check each snowball shot by player, if this snowball hit some AI
     for (vector<SnowBall>::iterator iter = SnowBallList_Player->begin(); iter != SnowBallList_Player->end(); iter++) {
         
         if (iter->getHP() >= 0) {
             iter->update();
-            
+            //check current snowball, if it hits any snowmans
             for (vector<SnowMan>::iterator i = SnowManList->begin();i != SnowManList->end(); i++) {
                 bool hit = iter->isHit(i->getPos(), i->getSize());
                 if (hit) {
                     iter->setHP(1);
-                    SnowManList->erase(i);
+                    SnowManList->erase(i);//if hit, snowman disappear
                     numbOfAIs--;
                     break;
                 }
@@ -247,6 +256,7 @@ void display(){
     glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, m_spec);
     glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shiny);
     
+    //update player's status every frame
     PlayerPnD();
     player0->DrawSnowman(playerPos, playerAngle);
     

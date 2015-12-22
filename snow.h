@@ -14,6 +14,7 @@
 
 using namespace std;
 
+//based on the type, snow could be snowball or snowman
 enum SnowType{
     man,
     ball
@@ -25,11 +26,12 @@ public:
     
     SnowType snowType;
     
-    virtual ~Snow();
+    virtual ~Snow();//deconstructor
     
     void setType(SnowType t);
     SnowType getType();
     
+    //for snowball, it has HP = 2000, which is 2000 seconds; for snowman, it has HP = 3, which means if it is hit, HP-- 
     int getHP() const;
     void setHP(int hp);
     
