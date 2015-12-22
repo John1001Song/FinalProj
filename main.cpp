@@ -42,6 +42,9 @@ float playerPos[] = {0, 0, 0};
 float playerDir[] = {0, 0, 0};
 float playerAngle = 0;
 
+//use flag to change player's view; first person view = 0 or third person view = 1
+int view_flag = 0;
+
 static int MAX_SNOWBALLS = 100;
 static int MAX_AIs = 10;
 
@@ -151,7 +154,8 @@ void keyboard(unsigned char key, int x, int y){
         //press v to change first person or third person view
         case 'v':
         case 'V':
-            
+            view_flag++;
+            view_flag = view_flag % 2;
             break;
         
         //press z to shoot snowballs
@@ -258,9 +262,39 @@ void display(){
     
     //update player's status every frame
     PlayerPnD();
+    
+    //here will implement player's view: first person or third person
+    if (view_flag == 0) {
+        //TODO first person view:
+        //gluLookAt();
+    }else{
+        //TODO third person view:
+        //gluLookAt();
+    }
+    
+    //draw player snowman
     player0->DrawSnowman(playerPos, playerAngle);
     
+    //use iter in vector SnowBallList_Player to draw each snowball
+    //TODO
+    for (vector<SnowBall>::iterator iter = SnowBallList_Player->begin(); iter != SnowBallList_Player->end(); iter++) {
+        
+        glPushMatrix();
+        //get snowball position and draw
+        glPopMatrix();
+        
+    }
     
+    //use iter in vector SnowManList to draw each AI snowman
+    //TODO
+    for (vector<SnowMan>::iterator iterM = SnowManList->begin(); iterM != SnowManList->end(); iterM++) {
+        
+        glPushMatrix();
+        //get AI snowman position and draw
+        glPopMatrix();
+        
+    }
+
     
     
     glutSwapBuffers();
